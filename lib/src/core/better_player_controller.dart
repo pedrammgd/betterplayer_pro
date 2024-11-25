@@ -212,13 +212,12 @@ class BetterPlayerController {
   BetterPlayerSubtitle? renderedSubtitle;
 
 
-  /// PIP
-  final Floating? floating;
+  /// PIP Floating
+  final Floating floating = Floating();
 
   BetterPlayerController(
     this.betterPlayerConfiguration, {
     this.betterPlayerPlaylistConfiguration,
-    this.floating,
     BetterPlayerDataSource? betterPlayerDataSource,
   }) {
     this._betterPlayerControlsConfiguration =
@@ -1067,7 +1066,7 @@ class BetterPlayerController {
     }
 
     final bool isPipSupported =
-        (await floating?.isPipAvailable) ?? false;
+        (await floating.isPipAvailable) ;
 
     if (isPipSupported) {
       _wasInFullScreenBeforePiP = _isFullScreen;
@@ -1075,7 +1074,7 @@ class BetterPlayerController {
       setControlsEnabled(false);
       if (Platform.isAndroid) {
         _wasInFullScreenBeforePiP = _isFullScreen;
-        final pipStatus = await floating?.enable(const ImmediatePiP());
+        await floating.enable(const ImmediatePiP());
         // await videoPlayerController?.enablePictureInPicture(
         //     left: 0, top: 0, width: 0, height: 0);
         // enterFullScreen();
@@ -1267,7 +1266,7 @@ class BetterPlayerController {
   ///cache started for given [betterPlayerDataSource] then it will be ignored.
   Future<void> stopPreCache(
       BetterPlayerDataSource betterPlayerDataSource) async {
-    return VideoPlayerController?.stopPreCache(betterPlayerDataSource.url,
+    return VideoPlayerController.stopPreCache(betterPlayerDataSource.url,
         betterPlayerDataSource.cacheConfiguration?.key);
   }
 
