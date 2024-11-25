@@ -784,17 +784,17 @@ class BetterPlayerController {
       _hasCurrentDataSourceInitialized = true;
       _postEvent(BetterPlayerEvent(BetterPlayerEventType.initialized));
     }
-    if (currentVideoPlayerValue.isPip) {
-      _wasInPipMode = true;
-    } else if (_wasInPipMode) {
-      _postEvent(BetterPlayerEvent(BetterPlayerEventType.pipStop));
-      _wasInPipMode = false;
-      if (!_wasInFullScreenBeforePiP) {
-        exitFullScreen();
-      }
+    // if (currentVideoPlayerValue.isPip) {
+    //   _wasInPipMode = true;
+    // } else if (_wasInPipMode) {
+    //   _postEvent(BetterPlayerEvent(BetterPlayerEventType.pipStop));
+    //   _wasInPipMode = false;
+    //   if (!_wasInFullScreenBeforePiP) {
+    //     exitFullScreen();
+    //   }
       if (_wasControlsEnabledBeforePiP) {
         setControlsEnabled(true);
-      }
+      // }
       videoPlayerController?.refresh();
     }
 
@@ -1131,7 +1131,8 @@ class BetterPlayerController {
     final bool isPipSupported =
         (await floating.isPipAvailable);
 
-    return isPipSupported && !_isFullScreen;
+    return isPipSupported;
+    // return isPipSupported && !_isFullScreen;
   }
 
   ///Handle VideoEvent when remote controls notification / PiP is shown
