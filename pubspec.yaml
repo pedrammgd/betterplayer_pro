@@ -1,4 +1,4 @@
-name: better_player
+name: better_player_pro
 description: Advanced video player. It solves many typical use cases and it's easy to run.
 version: 0.0.1
 homepage: https://github.com/jhomlala/betterplayer
@@ -20,7 +20,7 @@ dependencies:
   collection: ^1.18.0
   xml: ^6.5.0
   floating: ^5.0.1
-  
+
 
 dev_dependencies:
   lint: ^2.3.0
