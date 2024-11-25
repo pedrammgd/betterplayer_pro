@@ -1129,7 +1129,7 @@ class BetterPlayerController {
     }
 
     final bool isPipSupported =
-        (await videoPlayerController!.isPictureInPictureSupported()) ?? false;
+        (await floating.isPipAvailable);
 
     return isPipSupported && !_isFullScreen;
   }
